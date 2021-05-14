@@ -1,0 +1,22 @@
+String inputs;
+#define relay 1 2 
+void setup()
+{ Serial.begin(9600); 
+pinMode(relay1, OUTPUT); 
+digitalWrite(relay1, LOW); }
+void loop()
+{ while(Serial.available()) 
+    {  delay(10); 
+char c = Serial.read(); 
+if (c == '#')
+{ break;   }
+inputs += c; //Means inputs = inputs + c  }
+if (inputs.length() >0)
+      {  Serial.println(inputs);
+         if(inputs == "A") 
+{  digitalWrite(relay1, LOW); }
+else if(inputs == "a")
+{  digitalWrite(relay1, HIGH); }
+inputs="";
+}
+}
